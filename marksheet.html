@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Import font */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    /* General styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #090909;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+
+    /* General styles end */
+    /* .main{
+    text-align: center;
+} */
+    .showcase {
+        /* width: 100%; */
+        /* height: 0vh; */
+        position: relative;
+    }
+
+    .showcase video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+
+    .title {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: #090909;
+        font-size: 50px;
+        color: #fff;
+        mix-blend-mode: multiply;
+        user-select: none;
+    }
+
+    /* .main h1{
+    color: aliceblue;
+    font-size: 36px;
+} */
+    .button {
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #fff;
+        outline: 2px solid #7EFFB2;
+        padding: 30px 60px;
+        overflow: hidden;
+        transition: color 1s;
+    }
+
+    .button:hover {
+        color: #090909;
+    }
+
+    .button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -50px;
+        z-index: -1;
+        width: 150%;
+        height: 100%;
+        background-color: #7EFFB2;
+        transform: scaleX(0) skewX(35deg);
+        transform-origin: left;
+        transition: transform 1s;
+    }
+
+    .button:hover::before {
+        transform: scaleX(1) skewX(35deg);
+    }
+
+    /* INPUT GROUP */
+    .input-group {
+        position: relative;
+    }
+
+    .input-group input {
+        display: block;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        font: inherit;
+    }
+
+    .input-group input::placeholder {
+        transition: opacity 0.25s;
+    }
+
+    .input-group input:focus::placeholder {
+        opacity: 0;
+    }
+
+    .input-group label {
+        position: absolute;
+        top: -30px;
+        left: -26px;
+        line-height: 16px;
+        color: #fff;
+        display: inline-flex;
+        column-gap: 10px;
+        transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .input-group label::before {
+        content: url('./mail-line.svg');
+        opacity: 0;
+    }
+
+    .input-group:focus-within label,
+    .input-group input:valid~label {
+        transform: translateX(26px);
+    }
+
+    .input-group:focus-within label::before,
+    .input-group input:valid~label::before {
+        opacity: 1;
+        transition-delay: 0.1s;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="main">
+
+            <section class="showcase">
+                <video src="./video.mp4" autoplay loop muted></video>
+                <h1 class="title">Mark Sheet</h1>
+            </section>
+            <!-- <p> Enter First Subject Marks</p><input type="textbox" placeholder="" required>
+    <p> Enter Second Subject Marks</p><input type="textbox" placeholder="" required>
+    <p> Enter Third Subject Marks</p><input type="textbox" placeholder="" required>
+    <p> Enter Fourth Subject Marks</p><input type="textbox" placeholder="" required>
+    <p> Enter Fifth Subject Marks</p><input type="textbox" placeholder="" required> -->
+            <br><br>
+            <form name="form1">
+                <div class="input-group">
+                    <input type="number" placeholder="" id="message" name="txtnum1" required />
+                    <label for="message">Enter Your First No.</label>
+                </div>
+                <br><br>
+                <div class="input-group">
+                    <input type="number" placeholder="" id="message" name="txtnum2" required />
+                    <label for="message">Enter Your Second No.</label>
+                </div>
+                <br><br>
+                <div class="input-group">
+                    <input type="number" placeholder="" id="message" name="txtnum3" required />
+                    <label for="message">Enter Your Third No.</label>
+                </div>
+                <br><br>
+                <div class="input-group">
+                    <input type="number" placeholder="" id="message" name="txtnum4" required />
+                    <label for="message">Enter Your Fourth No.</label>
+                </div>
+                <br><br>
+                <div class="input-group">
+                    <input type="number" placeholder="" id="message" name="txtnum5" required />
+                    <label for="message">Enter Your Fifth No.</label>
+                </div>
+
+                <br><br>
+                <div style="padding: 1rem;">
+                    <a href="#" class="button" value="calculate" onclick='calculate()'>Get Result</a>
+                </div>
+        </div>
+    </div>
+    </form>
+    <script>
+
+
+        let a;
+        let b;
+        let c;
+        let d;
+        let e;
+        let result = 0;
+        let avg = 0;
+
+        function calculate(){
+            a =parseInt(form1.txtnum1.value);
+            b =parseInt(form1.txtnum2.value);
+            c =parseInt(form1.txtnum3.value);
+            d =parseInt(form1.txtnum4.value);
+            e =parseInt(form1.txtnum5.value);
+
+            result= a+b+c+d+e;
+
+            avg= result/3;
+
+            document.write("Your Result is" + "<b>" + result + "</b>" + "<br>")
+            document.write("Your Average is" + "<b>" + avg + "</b>" + "<br>")
+            if (avg<=100) {
+                document.write("congratulations You got A+ Grade.")
+            }
+            else if (avg>=80){
+                document.write("Congratulations You Got A+ Grade.")
+            }
+            // else(avg >=70){
+            //     document.write("The Result is :"+ "<b>" + "Pass" + "<b>")
+            // }
+            else if (avg>=70  <80) {
+                document.write("Congratulations You Got A Grade.")
+            }
+            else if(avg>=60 < 70){
+                dcoument.write("You Got B Grade.")
+            }
+            else if(avg>=50){
+                dcoument.write("You Got C Grade.")
+            }
+            else{
+                document.write("You're Failed")
+            }
+            
+        }
+
+
+    </script>
+</body>
+
+</html>
